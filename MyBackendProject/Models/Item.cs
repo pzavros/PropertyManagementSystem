@@ -4,12 +4,13 @@ namespace MyBackendProject.Models
 {
     public class Item
     {
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "The name field is required.")]
-        public string Name { get; set; }
+        [Required]
+        public string Name { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "The description field is required.")]
-        public string Description { get; set; }
+        [Required]
+        public string Description { get; set; } = string.Empty;
     }
 }

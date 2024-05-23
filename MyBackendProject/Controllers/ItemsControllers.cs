@@ -1,74 +1,63 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyBackendProject.Models;
 using MyBackendProject.Services;
 
-[ApiController]
-[Route("api/[controller]")]
-public class ItemsController : ControllerBase
+namespace MyBackendProject.Controllers
 {
-    private readonly IItemService _itemService;
-
-    public ItemsController(IItemService itemService)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ItemsController : ControllerBase
     {
-        _itemService = itemService;
-    }
+        private readonly IItemService _itemService;
 
-    [HttpGet]
-    public IEnumerable<Item> Get()
-    {
-        return _itemService.GetItems();
-    }
-
-    [HttpGet("{id}")]
-    public ActionResult<Item> Get(int id)
-    {
-        var item = _itemService.GetItemById(id);
-        if (item == null)
+        public ItemsController(IItemService itemService)
         {
-            return NotFound();
-        }
-        return item;
-    }
-
-    [HttpPost]
-    public IActionResult Post([FromBody] Item item)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        _itemService.AddItem(item);
-        return CreatedAtAction(nameof(Get), new { id = item.Id }, item);
-    }
-
-    [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] Item item)
-    {
-        if (id != item.Id)
-        {
-            return BadRequest();
+            _itemService = itemService;
         }
 
-        var existingItem = _itemService.GetItemById(id);
-        if (existingItem == null)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
-            return NotFound();
+            return Ok(await _itemService.GetItemsAsync());
         }
 
-        _itemService.UpdateItem(item);
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
-    {
-        var item = _itemService.GetItemById(id);
-        if (item == null)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Item>> GetItem(int id)
         {
-            return NotFound();
+            var item = await _itemService.GetItemByIdAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return item;
         }
 
-        _itemService.DeleteItem(id);
-        return NoContent();
+        [HttpPost]
+        public async Task<ActionResult<Item>> PostItem(Item item)
+        {
+            await _itemService.AddItemAsync(item);
+            return CreatedAtAction("GetItem", new { id = item.Id }, item);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutItem(int id, Item item)
+        {
+            if (id != item.Id)
+            {
+                return BadRequest();
+            }
+
+            await _itemService.UpdateItemAsync(item);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            await _itemService.DeleteItemAsync(id);
+            return NoContent();
+        }
     }
 }
