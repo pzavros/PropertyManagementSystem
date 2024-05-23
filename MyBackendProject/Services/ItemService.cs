@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using MyBackendProject.Models;
 
 namespace MyBackendProject.Services
@@ -13,35 +14,37 @@ namespace MyBackendProject.Services
             _context = context;
         }
 
-        public IEnumerable<Item> GetItems()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            return _context.Items.ToList();
+            return await _context.Items.ToListAsync();
         }
 
-        public Item GetItemById(int id)
+        public async Task<Item> GetItemByIdAsync(int id)
         {
-            return _context.Items.FirstOrDefault(item => item.Id == id);
+            return await _context.Items.FindAsync(id);
         }
 
-        public void AddItem(Item item)
+        public async Task<Item> AddItemAsync(Item item)
         {
             _context.Items.Add(item);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return item;
         }
 
-        public void UpdateItem(Item item)
+        public async Task<Item> UpdateItemAsync(Item item)
         {
-            _context.Items.Update(item);
-            _context.SaveChanges();
+            _context.Entry(item).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return item;
         }
 
-        public void DeleteItem(int id)
+        public async Task DeleteItemAsync(int id)
         {
-            var item = _context.Items.FirstOrDefault(i => i.Id == id);
+            var item = await _context.Items.FindAsync(id);
             if (item != null)
             {
                 _context.Items.Remove(item);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }
