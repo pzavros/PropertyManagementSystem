@@ -1,11 +1,10 @@
 import React from 'react';
-import ItemList from './Components/ItemList';
+import ItemsPage from './Pages/ItemsPage';
 
 function App() {
     return (
         <div>
-            <h1>My React and .NET App</h1>
-            <ItemList />
+            <ItemsPage />
         </div>
     );
 }

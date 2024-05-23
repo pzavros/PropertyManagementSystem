@@ -1,6 +1,5 @@
 export class Item {
-    constructor(id, name, description) {
-        this.id = id;
+    constructor(name, description) {
         this.name = name;
         this.description = description;
     }

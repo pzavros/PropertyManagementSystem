@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import ItemForm from './ItemForm';
+import { fetchItems } from './itemApi';
 
 function ItemList() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetchItems();
-    }, []);
+        const getItems = async () => {
+            const itemsData = await fetchItems();
+            setItems(itemsData);
+        };
 
-    const fetchItems = async () => {
-        const response = await fetch('/api/items');
-        const data = await response.json();
-        setItems(data);
-    };
+        getItems();
+    }, []);
 
     const handleAddItem = (item) => {
         setItems([...items, item]);

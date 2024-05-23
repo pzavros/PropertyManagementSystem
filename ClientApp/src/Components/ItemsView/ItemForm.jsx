@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Item } from '../Models/Item';
+import { Item } from '../../Models/Item';
+import { createItem } from './itemApi';
 
 function ItemForm({ onAddItem }) {
     const [name, setName] = useState('');
@@ -7,22 +8,14 @@ function ItemForm({ onAddItem }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newItem = { name, description };
-        const response = await fetch('/api/items', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newItem),
-        });
-        if (response.ok) {
-            const item = await response.json();
-            onAddItem(item);
+        const newItem = new Item(name, description);
+        try {
+            const addedItem = await createItem(newItem);
+            onAddItem(addedItem);
             setName('');
             setDescription('');
-        } else {
-            const errorData = await response.json();
-            console.error('Error:', errorData);
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
 
