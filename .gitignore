@@ -50,6 +50,10 @@ Thumbs.db
 # Specific files and directories to ignore based on your image
 MyBackendProject/bin/
 MyBackendProject/obj/
+MyBackendProject/bin/Debug/
+MyBackendProject/obj/Debug/
+MyBackendProject/bin/Debug/net8.0/
+MyBackendProject/obj/Debug/net8.0/
 *.AssemblyInfo.cs
 *.AssemblyInfoInputs.cache
 *.exe
