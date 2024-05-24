@@ -48,17 +48,15 @@ build/
 Thumbs.db
 
 # Specific files and directories to ignore based on your image
-MyBackendProject/bin/
-MyBackendProject/obj/
-MyBackendProject/bin/Debug/
-MyBackendProject/bin/Release/
-MyBackendProject/bin/Debug/net8.0/
-MyBackendProject/obj/Debug/net8.0/
-
-
+bin/
+obj/
 *.AssemblyInfo.cs
 *.AssemblyInfoInputs.cache
 *.exe
 *.dll
 *.pdb
 *.apphost.exe
+
+# Ignore specific obj files within the project
+MyBackendProject/obj/
+MyBackendProject/bin/
