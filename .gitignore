@@ -51,9 +51,11 @@ Thumbs.db
 MyBackendProject/bin/
 MyBackendProject/obj/
 MyBackendProject/bin/Debug/
-MyBackendProject/obj/Debug/
+MyBackendProject/bin/Release/
 MyBackendProject/bin/Debug/net8.0/
 MyBackendProject/obj/Debug/net8.0/
+
+
 *.AssemblyInfo.cs
 *.AssemblyInfoInputs.cache
 *.exe
