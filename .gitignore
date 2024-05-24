@@ -8,9 +8,6 @@
 *.userosscache
 *.sln.docstates
 
-# User-specific files (Mono Auto Generated)
-mono_crash.*
-
 # Mono auto generated files
 mono_crash.*
 
@@ -58,7 +55,6 @@ MyBackendProject/obj/
 *.dll
 *.pdb
 *.apphost.exe
-/MyBackendProject/obj
 /MyBackendProject/obj
 /MyBackendProject/obj/Debug
 /MyBackendProject/obj/Debug/net8.0
