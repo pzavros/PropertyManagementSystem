@@ -50,11 +50,9 @@ Thumbs.db
 # Specific files and directories to ignore based on your image
 MyBackendProject/bin/
 MyBackendProject/obj/
-MyBackendProject/*.AssemblyInfo.cs
-MyBackendProject/*.nuget.dgspec.json
-MyBackendProject/*.nuget.g.props
-MyBackendProject/*.assets.json
-MyBackendProject/*.nuget.cache
-MyBackendProject/*.packagespec.json
-MyBackendProject/*.model.nuget.info
-MyBackendProject/*.restore.info
+*.AssemblyInfo.cs
+*.AssemblyInfoInputs.cache
+*.exe
+*.dll
+*.pdb
+*.apphost.exe
