@@ -17,6 +17,7 @@ namespace MyBackendProject.Services
         public async Task<IEnumerable<Item>> GetItemsAsync()
         {
             return await _context.Items.ToListAsync();
+            
         }
 
         public async Task<Item> GetItemByIdAsync(int id)

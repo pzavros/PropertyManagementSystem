@@ -10,6 +10,6 @@ namespace MyBackendProject.Services
         Task<Item> GetItemByIdAsync(int id);
         Task<Item> AddItemAsync(Item item);
         Task<Item> UpdateItemAsync(Item item);
-        Task DeleteItemAsync(int id);
+        Task DeleteItemAsync(int id); 
     }
 }
