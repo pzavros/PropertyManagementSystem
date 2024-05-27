@@ -1,26 +1,13 @@
+// ItemForm.jsx
 import React, { useState } from 'react';
-import { Item } from '../../Models/Item';
-import { createItem } from './itemApi';
+import { handleSubmit } from './ItemsFunctions';
 
-function ItemForm({ onAddItem }) {
+function ItemsForm({ onAddItem }) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const newItem = new Item(name, description);
-        try {
-            const addedItem = await createItem(newItem);
-            onAddItem(addedItem);
-            setName('');
-            setDescription('');
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
-
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => handleSubmit(e, name, description, onAddItem, setName, setDescription)}>
             <div>
                 <label>Name:</label>
                 <input
@@ -42,4 +29,4 @@ function ItemForm({ onAddItem }) {
     );
 }
 
-export default ItemForm;
+export default ItemsForm;
