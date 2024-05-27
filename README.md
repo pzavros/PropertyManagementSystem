@@ -1,4 +1,4 @@
-# MyBackendProjectTemplate
+# Property Management System
 
 This project is a template for a full-stack application with a .NET backend and a React frontend. It includes the necessary structure, models, controllers, and services to get you started quickly.
 
