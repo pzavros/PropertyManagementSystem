@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MyBackendProject.Models;
-using MyBackendProject.Services;
+using Backend.Models;
+using Backend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Backend.Models;
+using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
-using MyBackendProject.Models;
-using MyBackendProject.Services;
 
-namespace MyBackendProject.Controllers
+namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
