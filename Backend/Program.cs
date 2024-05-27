@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MyBackendProject.Models;
-using MyBackendProject.Services;
+using Backend.Models;
+using Backend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:5173")
+        builder.WithOrigins("http://localhost:5175")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

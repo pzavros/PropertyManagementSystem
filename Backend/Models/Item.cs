@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MyBackendProject.Models
+namespace Backend.Models
 {
     public class Item
     {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MyBackendProject.Models;
+using Backend.Models;
 
-namespace MyBackendProject.Services
+namespace Backend.Services
 {
     public interface IItemService
     {

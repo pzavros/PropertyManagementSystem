@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Backend.Models;
 using Microsoft.EntityFrameworkCore;
-using MyBackendProject.Models;
 
-namespace MyBackendProject.Services
+namespace Backend.Services
 {
     public class ItemService : IItemService
     {
