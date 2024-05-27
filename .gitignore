@@ -23,7 +23,7 @@ mono_crash.*
 [Aa][Cc][Tt][Ii][Vv][Ee][Cc][Oo][Nn][Ff][Ii][Gg]/
 .vs/
 
-# Rider
+# Rider specific
 .idea/
 .idea/*
 
@@ -45,8 +45,8 @@ build/
 Thumbs.db
 
 # Build and Obj directories to be ignored
-MyBackendProject/bin/
-MyBackendProject/obj/
+**/bin/
+**/obj/
 
 # Ignore specific file types in any location
 *.AssemblyInfo.cs
@@ -55,10 +55,17 @@ MyBackendProject/obj/
 *.dll
 *.pdb
 *.apphost.exe
-/MyBackendProject/obj
-/MyBackendProject/obj/Debug
-/MyBackendProject/obj/Debug/net8.0
-/MyBackendProject/obj/Debug/net8.0/ref
-MyBackendProject/obj/Debug/net8.0/MyBackendProject.pdb
-MyBackendProject/obj/Debug/net8.0/ref/MyBackendProject.dll
-MyBackendProject/obj/Debug/net8.0/refint/MyBackendProject.dll
+
+# Ignore Rider project-specific files
+*.idea/
+*.idea/*
+
+# Ignore temporary project files
+**/obj/**/*.csproj.nuget.dgspec.json
+**/obj/**/*.json
+**/obj/**/*.nuget.cache
+**/obj/**/*.nuget.info
+**/obj/**/*.nuget.spec.json
+
+# Ignore all changes to project-specific debug outputs
+**/obj/Debug/
