@@ -1,3 +1,4 @@
+// src/Components/ItemsView/ItemsLanguageButton.jsx
 import React from 'react';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import Translate from '../ReusableComponents/Translate';
@@ -11,12 +12,12 @@ const LanguageSelector = () => {
 
   return (
     <FormControl variant="outlined" sx={{ minWidth: 120, marginBottom: 2 }}>
-      <InputLabel id="language-select-label">{t('selectLanguage')}</InputLabel>
+      <InputLabel id="language-select-label">{t('b.selectLanguage')}</InputLabel>
       <Select
         labelId="language-select-label"
         value={currentLanguage}
         onChange={handleLanguageChange}
-        label={t('selectLanguage')}
+        label={t('b.selectLanguage')}
       >
         <MenuItem value="en">English</MenuItem>
         <MenuItem value="gr">Greek</MenuItem>

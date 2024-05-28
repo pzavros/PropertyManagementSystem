@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import HomePage from './Pages/HomePage';
-import ItemsPage from './Pages/ItemsPage';
+import ItemsPage from './Pages/ItemsPage/ItemsPage';
 
 const theme = createTheme();
 
