@@ -1,0 +1,13 @@
+{
+    "menu": {
+        "homePage": "Home Page"
+    },
+    "b": {
+        "name": "Name",
+        "description": "Description",
+        "addItem": "Add Item",
+        "selectLanguage": "Select Language",
+        "itemsManagement": "Items Management",
+        "items": "Items"
+    }
+}
