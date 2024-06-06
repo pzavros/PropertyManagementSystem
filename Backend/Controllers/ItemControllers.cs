@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Models;
+using Backend.DTOs;
 using Backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,13 +18,13 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
+        public async Task<ActionResult<IEnumerable<ItemDto>>> GetItems()
         {
             return Ok(await _itemService.GetItemsAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Item>> GetItem(int id)
+        public async Task<ActionResult<ItemDto>> GetItem(int id)
         {
             var item = await _itemService.GetItemByIdAsync(id);
             if (item == null)
@@ -35,21 +35,26 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Item>> PostItem(Item item)
+        public async Task<ActionResult<ItemDto>> PostItem(ItemDto itemDto)
         {
-            await _itemService.AddItemAsync(item);
-            return CreatedAtAction("GetItem", new { id = item.Id }, item);
+            var createdItem = await _itemService.AddItemAsync(itemDto);
+            return CreatedAtAction("GetItem", new { id = createdItem.Id }, createdItem);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(int id, Item item)
+        public async Task<IActionResult> PutItem(int id, ItemDto itemDto)
         {
-            if (id != item.Id)
+            if (id != itemDto.Id)
             {
                 return BadRequest();
             }
 
-            await _itemService.UpdateItemAsync(item);
+            var updatedItem = await _itemService.UpdateItemAsync(itemDto);
+            if (updatedItem == null)
+            {
+                return NotFound();
+            }
+
             return NoContent();
         }
 

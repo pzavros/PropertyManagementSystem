@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Backend.DTOs;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,29 +15,62 @@ namespace Backend.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync()
+        public async Task<IEnumerable<ItemDto>> GetItemsAsync()
         {
-            return await _context.Items.ToListAsync();
-            
+            var items = await _context.Items.ToListAsync();
+            var itemDtos = new List<ItemDto>();
+            foreach (var item in items)
+            {
+                itemDtos.Add(new ItemDto
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Description = item.Description
+                });
+            }
+            return itemDtos;
         }
 
-        public async Task<Item> GetItemByIdAsync(int id)
+        public async Task<ItemDto> GetItemByIdAsync(int id)
         {
-            return await _context.Items.FindAsync(id);
+            var item = await _context.Items.FindAsync(id);
+            if (item == null)
+            {
+                return null;
+            }
+            return new ItemDto
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Description = item.Description
+            };
         }
 
-        public async Task<Item> AddItemAsync(Item item)
+        public async Task<ItemDto> AddItemAsync(ItemDto itemDto)
         {
+            var item = new Item
+            {
+                Name = itemDto.Name,
+                Description = itemDto.Description
+            };
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
-            return item;
+            itemDto.Id = item.Id;
+            return itemDto;
         }
 
-        public async Task<Item> UpdateItemAsync(Item item)
+        public async Task<ItemDto> UpdateItemAsync(ItemDto itemDto)
         {
+            var item = await _context.Items.FindAsync(itemDto.Id);
+            if (item == null)
+            {
+                return null;
+            }
+            item.Name = itemDto.Name;
+            item.Description = itemDto.Description;
             _context.Entry(item).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return item;
+            return itemDto;
         }
 
         public async Task DeleteItemAsync(int id)
