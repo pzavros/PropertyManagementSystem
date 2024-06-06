@@ -7,13 +7,13 @@ import LanguageSelector from '../../Components/ItemsView/ItemsLanguageButton';
 import { useItemsPage } from './ItemsPageFunctions';
 
 function ItemsPage() {
-  const { items, t, handleAddItem } = useItemsPage();
+  const { items, setItems, t, handleAddItem } = useItemsPage();
 
   return (
     <Box className="m-4">
       <LanguageSelector />
       <ItemsForm onAddItem={handleAddItem} />
-      <ItemsList items={items} />
+      <ItemsList items={items} setItems={setItems} />
     </Box>
   );
 }

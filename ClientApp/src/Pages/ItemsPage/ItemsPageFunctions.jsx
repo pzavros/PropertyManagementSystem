@@ -15,5 +15,5 @@ export const useItemsPage = () => {
     setItems([...items, item]);
   };
 
-  return { items, t, handleAddItem };
+  return { items, setItems, t, handleAddItem };
 };
