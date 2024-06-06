@@ -43,7 +43,7 @@ function ItemsList({ items, setItems }) {
                             <>
                                 <TextField
                                     name="name"
-                                    label="Name"
+                                    label={t('b.name')}
                                     value={editedItem.name}
                                     onChange={handleEditChange}
                                     margin="dense"
@@ -52,7 +52,7 @@ function ItemsList({ items, setItems }) {
                                 />
                                 <TextField
                                     name="description"
-                                    label="Description"
+                                    label={t('b.description')}
                                     value={editedItem.description}
                                     onChange={handleEditChange}
                                     margin="dense"
